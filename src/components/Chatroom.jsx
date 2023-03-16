@@ -31,9 +31,8 @@ import { AddIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { doc, setDoc } from 'firebase/firestore';
-import Messages from './Messages';
 import Chats from './Chats';
-
+import Chat from './Chat';
 function Chatroom() {
   const [user] = useAuthState(auth);
 
@@ -130,7 +129,7 @@ function Chatroom() {
             </Box>
           </Center>
           <Divider />
-          <Box h='65vh'>
+          <Box h='65vh' overflow='hidden'>
             <Tabs
               orientation='vertical'
               variant='soft-rounded'
@@ -144,7 +143,7 @@ function Chatroom() {
                 <Chats tabs={tabs} setTabs={setTabs} />
               </Box>
               <Divider orientation='vertical' h='65vh' />
-              <Messages tabs={tabs} tabIndex={tabIndex} />
+              <Chat tabs={tabs} tabIndex={tabIndex} />
             </Tabs>
           </Box>
           <Button
